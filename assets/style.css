@@ -8,30 +8,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 
 
-@media screen and (max-width: 700px) {
-    body {
-        background-color: lightcoral;
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        justify-content: center;
-    }
-}
-
-@media screen and (min-width: 600px) {
-    body {
-        background-color: rgb(7, 211, 184);
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        align-content: center;
-    }
-}
-
 #home {
     padding: 2rem;
-    width: 30vw;
-    height: 30vw;
+    width: 50vw;
+    height: 50vw;
+    margin-top: 5rem;
+    margin-left: 10rem;
     border: 2px dotted greenyellow;
     border-radius: 2rem;
     display: flex;
@@ -39,11 +21,30 @@
     flex-direction: column;
     align-content: center;
     justify-content: center;
+    align-items: center;
 }
 
-#start {
+.btn {
     border: 2px solid black;
     border-radius: 2rem;
     padding: 2px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     justify-content: center;
+    align-content: center;
+    color: rgb(240, 84, 70);
+    background: linear-gradient(purple, rgb(104, 11, 151));
+}
+
+
+@media screen and (max-width: 700px) {
+    body {
+        background-color: lightcoral;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    body {
+        background-color: rgb(7, 211, 184);
+    }
 }
