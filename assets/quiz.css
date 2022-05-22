@@ -12,10 +12,8 @@
     padding: 2rem;
     width: 50vw;
     height: 50vw;
-    margin-top: 10rem;
-    margin-bottom: 10rem;
-    margin-left: 10rem;
-    border: 2px dotted rgb(21, 70, 70);
+    margin: 5rem auto 5rem auto;
+    border: 5px outset rgb(0, 238, 255);
     border-radius: 2rem;
     max-width: 100rem;
     display: flex;
@@ -24,6 +22,7 @@
     align-content: center;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(180deg, rgb(200, 255, 0), ivory);
 }
 
 
@@ -39,6 +38,6 @@
 
 @media screen and (min-width: 700px) {
     body {
-        background-color: rgb(235, 187, 15);
+        background-image: -webkit-repeating-radial-gradient(rgb(248, 208, 8),rgb(121, 8, 234));
     }
 }
