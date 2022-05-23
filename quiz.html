@@ -10,8 +10,63 @@
 <body>
     <div class="wrapper">
         <div class="container">
-            <h1>Let the Games Begin!</h1>
+            <h1>🚀 Let the Games Begin! ⏰</h1>
+            <div id="gameHud">
+                <div class="hud-item">
+                    <p id="progressText" class="hud-prefix">
+                        Question
+                    </p>
+                    <h2 class="hud-question-Num" id="questionNum">
+                        0
+                    </h2>
+                </div>
+                <div class="hud-item">
+                    <p id="scoreText" class="hud-prefix">
+                        Score
+                    </p>
+                    <h2 class="hud-score-text" id="scoreNum">
+                        0
+                    </h2> 
+                </div>
+                <div id="question">  
+                    <h3>Javascript is an [_______] language?
+                    </h3>
+                    <div class="choice-container">
+                        <p class="choice prefix">
+                            A
+                        </p>
+                        <p class="choice-text" data-number="1">
+                            Choice 1
+                        </p>
+                    </div>
+                    <div class="choice-container">
+                        <p class="choice prefix">
+                            B
+                        </p>
+                        <p class="choice-text" data-number="2">
+                            Choice 2
+                        </p>
+                    </div>
+                    <div class="choice-container">
+                        <p class="choice prefix">
+                            C
+                        </p>
+                        <p class="choice-text" data-number="3">
+                            Choice 3
+                        </p>
+                    </div>
+                    <div class="choice-container">
+                        <p class="choice prefix">
+                            D
+                        </p>
+                        <p class="choice-text" data-number="4">
+                            Choice 4
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    <script src="./assets/quiz.js"></script>
 </body>
 </html>

@@ -1,43 +1,58 @@
 * {
     box-sizing: border-box;
     margin: 0;
+    margin-bottom: 1rem;
     padding: 0;
     font-family: 'Orbitron', sans-serif;
+    color:darkred;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 
-
 .container {
     padding: 2rem;
-    width: 50vw;
-    height: 50vw;
+    width: fit-content;
+    height: fit-content;
     margin: 5rem auto 5rem auto;
     border: 5px outset rgb(0, 238, 255);
     border-radius: 2rem;
     max-width: 100rem;
+    max-height: 100rem;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     align-content: center;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(180deg, rgb(200, 255, 0), ivory);
+    background: linear-gradient(360deg, rgb(200, 255, 0), ivory, rgb(8, 165, 244));
+    box-shadow: 0 0 5rem rgb(200, 169, 14);
 }
 
+.hud-item {
+    color:rgb(121, 8, 234);
+    margin: 1rem auto 1rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    line-height: 2;
+}
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 896px) {
     body {
-        background-color: lightcoral;
+        background-image: -webkit-repeating-radial-gradient(rgb(147, 8, 234),rgb(231, 78, 7));
     }
     .container {
-        max-width: 80rem;
-        font-size: 40%;
+        font-size: 20%;
     }
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 897px) {
     body {
         background-image: -webkit-repeating-radial-gradient(rgb(248, 208, 8),rgb(121, 8, 234));
+    }
+    .container {
+        font-size: 70%;
     }
 }

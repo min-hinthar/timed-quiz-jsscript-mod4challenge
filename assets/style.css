@@ -26,6 +26,29 @@
     background: linear-gradient(180deg, orange, ivory);
 }
 
+.typewriter h1 h4 {
+    /* //hide at refresh */
+    overflow: hidden;
+    border-right: .2em solid purple;
+    white-space: nowrap;
+    /* //scroll effect */
+    margin: 0 auto;
+    letter-spacing: 1em;
+    animation:
+        typing 3.5s steps(30, end),
+        blink-caret .5s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0}
+    to { width: 100%}
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent}
+    50% { border-color: white}
+}
+
 .btn {
     border: 2px solid black;
     width: fit-content;
