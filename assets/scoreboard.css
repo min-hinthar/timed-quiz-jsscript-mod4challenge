@@ -25,6 +25,12 @@
     background: linear-gradient(180deg, rgb(0, 255, 200), ivory);
 }
 
+.container h1:hover {
+    font-size: 2rem;
+    transition: 500ms;
+    transform: scale(1.5);
+}
+
 @media screen and (max-width: 700px) {
     body {
         background-color: lightcoral;

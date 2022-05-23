@@ -26,8 +26,10 @@
     box-shadow: 0 0 5rem rgb(200, 169, 14);
 }
 
-.container h1 {
+.container h1:hover {
     font-size: 2rem;
+    transition: 500ms;
+    transform: scale(1.5);
 }
 
 /* HUD => Countdownr */
