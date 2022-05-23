@@ -16,8 +16,6 @@
     margin: 5rem auto 5rem auto;
     border: 5px outset rgb(0, 238, 255);
     border-radius: 2rem;
-    max-width: 100rem;
-    max-height: 100rem;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -44,7 +42,7 @@
         background-image: -webkit-repeating-radial-gradient(rgb(147, 8, 234),rgb(231, 78, 7));
     }
     .container {
-        font-size: 20%;
+        font-size: 50%;
     }
 }
 
