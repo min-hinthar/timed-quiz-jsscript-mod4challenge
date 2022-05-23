@@ -26,6 +26,40 @@
     box-shadow: 0 0 5rem rgb(200, 169, 14);
 }
 
+.container h1 {
+    font-size: 2rem;
+}
+
+/* HUD => Countdownr */
+.countdown {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem auto 1rem auto;
+}
+
+#countdownText, #countdownTimer{
+    font-size: 1rem;
+    color:rgb(114, 21, 181);
+    animation: blinker 2s linear infinite; 
+}
+/* inspired by: https://stackoverflow.com/questions/16344354/how-to-make-blinking-flashing-text-with-css-3 */
+
+@keyframes blinker {
+    10% {
+        opacity: 0;
+    }
+}
+
+/* HUD => Progress Bar */
+#progressText, #scoreText {
+    font-size: 1.5rem;
+    color:rgb(116, 13, 190);
+}
+
 .hud-item {
     color:rgb(121, 8, 234);
     margin: 1rem auto 1rem auto;
@@ -37,20 +71,59 @@
     line-height: 2;
 }
 
-@media screen and (max-width: 896px) {
+#question h2 {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem auto 1rem auto;
+    font-size: 2rem;
+    color:rgb(13, 21, 80) ;
+    background-image:-webkit-repeating-radial-gradient(white, rgb(206, 142, 142));
+    border-radius: 5px;
+}
+
+.choice-container {
+    display: flex;
+    margin: 1rem;
+    width: 80%;
+    border-radius: 5px;
+    background: rgb(102, 4, 172);
+    font-size: 1rem;
+    min-width: 40rem;
+}
+
+.choice-container p {
+    margin: 1rem;
+    color: white;
+}
+
+.choice-container:hover {
+    box-shadow: 0 0 15px rgb(97, 5, 5);
+    cursor: pointer;
+    transition: 900ms;
+    transform: scale(1.2);
+    background: deeppink;
+}
+
+@media screen and (max-width: 768px) {
     body {
         background-image: -webkit-repeating-radial-gradient(rgb(147, 8, 234),rgb(231, 78, 7));
     }
     .container {
         font-size: 50%;
+        max-width: 60rem;
     }
 }
 
-@media screen and (min-width: 897px) {
+@media screen and (min-width: 768px) {
     body {
         background-image: -webkit-repeating-radial-gradient(rgb(248, 208, 8),rgb(121, 8, 234));
     }
     .container {
-        font-size: 70%;
+        font-size: 1rem;
+        max-width: 90rem;
     }
 }

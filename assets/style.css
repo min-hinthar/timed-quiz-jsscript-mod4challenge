@@ -26,17 +26,23 @@
     background: linear-gradient(180deg, orange, ivory);
 }
 
-.typewriter h1 h4 {
+/* inspired by: https://www.sitepoint.com/css-typewriter-effect/ */
+.typewriter {
     /* //hide at refresh */
     overflow: hidden;
-    border-right: .2em solid purple;
+    border-right: .1em solid purple;
+    width: 0;
     white-space: nowrap;
     /* //scroll effect */
-    margin: 0 auto;
-    letter-spacing: 1em;
+    margin: 4rem auto;
+    letter-spacing: .5em;
     animation:
-        typing 3.5s steps(30, end),
+        typing 3.5s steps(30), forwards,
         blink-caret .5s step-end infinite;
+}
+
+.home {
+    display: inline-block;
 }
 
 @keyframes typing {
