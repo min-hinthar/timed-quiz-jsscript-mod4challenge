@@ -108,8 +108,8 @@
         background-color: rgb(12, 167, 239);
     }
     #home {
-        max-width: 50%;
-        font-size: 50%;
+        max-width: 100%;
+        font-size: 100%;
     }
     .btn:hover {
         box-shadow: 1rem rgb(103, 8, 218);
