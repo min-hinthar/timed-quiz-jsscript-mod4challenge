@@ -1,7 +1,7 @@
-const question = document.querySelectorAll('#question');
-const choices = Array.from(document.querySelectorAll('.choice-text'));
-const questionProgress = document.querySelectorAll('#questionNum');
-const scoreText = document.querySelectorAll('#scoreNum');
+const question = document.querySelectorAll("#question");
+const choices = Array.from(document.querySelectorAll(".choice-text");
+const questionProgress = document.querySelectorAll("#questionNum");
+const scoreText = document.querySelectorAll("#scoreNum");
 
 let availableQuestions = 0;
 let currentQuestion = {};
