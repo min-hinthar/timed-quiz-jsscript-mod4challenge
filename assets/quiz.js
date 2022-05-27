@@ -1,15 +1,25 @@
-const question = document.getElementById("question");
-const choices = document.getElementsByClassName("choice-text");
-const questionProgress = document.getElementById("countdownTimer");
-const scoreText = document.getElementById("scoreNum");
-const scorePoints = 100;
-const maxQuestions = 5;
+var question = document.querySelector("#question");
+var choices = document.querySelectorAll(".choice-text");
+var countdownTimer = document.getElementById("countdownTimer");
+var scoreText = document.getElementById("scoreNum");
+var scorePoints = 100;
+var maxQuestions = 5;
+var currentQuestion = document.querySelector("#questionNum")
+
+// console.log(question);
+// console.log(choices);
+// console.log(countdownTimer);
+// console.log(scoreText);
+// console.log(scorePoints);
+// console.log(maxQuestions);
+// console.log(currentQuestion);
 
 let availableQuestions = 0;
-let currentQuestion = 0;
+// let currentQuestion = 0;
 let questionCounter = 1;
 let chosenAnswer = true;
 let score = 0;
+
 
 var questionsArray = [
     {
@@ -61,6 +71,7 @@ var questionsArray = [
     //     answer: 4,
     // },
 
+// console.log(questionsArray);
 
 // WHEN I click the start button
 // startGame = () => {
@@ -74,19 +85,18 @@ var questionsArray = [
 // THEN a timer starts and I am presented with a question
 
 var secondsLeft = 60;
-
 function setTime() {
     var timeInterval = setInterval(function () {
         secondsLeft--;
-        questionProgress.textContent = secondsLeft;
+        countdownTimer.textContent = secondsLeft;
         
-    if(secondsLeft === 0) {
+    if(secondsLeft === 0 ) {
         clearInterval(timeInterval);
+        alert("Time is up! Please input your name to save your scores on local scoreboard!")
         return window.location.assign('/scoreboard.html')
     }
     }, 1000);
 }
-
 setTime();
 
 // getNewQuestion = () => {
@@ -97,39 +107,46 @@ setTime();
     // }
     // questionCounter++
     // incrementScore(questionCounter);
+    var questions = document.querySelector("#question");
+    var choices = document.querySelectorAll(".choice-text");
+    // console.log(question);
+    // console.log(choices);
+
+function getNewQuestion(index) {
+    // console.log(questionsArray[index]);
+        var h3 = questions;
+        h3.textContent = questionsArray[index].question;
+        document.body.append(h3);
 
 
-
-function getNewQuestion(questionsArray) {
-    for(var i = 0; i < currentQuestion.length; i++) {
-        console.log(questionsArray[i]);
+    for(var i = 0; i < questionsArray[index].possibleAnswers.length; i++) {
+        var p = choices;
+        p.textContent = questionsArray[index].choices[i];
+        document.body.append(p);
+        // console.log(questionsArray[i].possibleAnswers[i]);
+        // console.log(questionsArray[index].possibleAnswers[i]);
+    // }
     }
 }
-    // document.body.append(JSON.stringify(questionsArray[index]));
-    // var h2 = document.createElement("h2")
-    // h2.textContent = questions[index].question;
-    // document.body.append(h2);
 
-// }
+getNewQuestion(0);
 
-getNewQuestion();
+//     var questionsIndex = Math.floor(Math.random() * availableQuestions.length)
+//     currentQuestion = availableQuestions[questionsIndex]
+//     question.innerText = currentQuestion.
 
-    // const questionsIndex = Math.floor(Math.random() * availableQuestions.length)
-    // currentQuestion = availableQuestions[questionsIndex]
-    // question.innerText = currentQuestion.question
+//     choices.forEach(choices => {
+//         const number = choice.dataset['number']
+//         choice.innerText = currentQuestion.question['choice' + number] 
+//     } )
 
-    // choices.forEach(choice => {
-    //     const number = choice.dataset['number']
-    //     choice.innerText = currentQuestion.question['choice' + number] 
-    // } )
+//     availableQuestions.splice(questionsIndex, 1)
 
-    // availableQuestions.splice(questionsIndex, 1)
-
-    // chosenAnswer = true
+//     chosenAnswer = true
 
 
-// WHEN I answer a question
-// choices.forEach(choice => {
+// // WHEN I answer a question
+// choices.forEach(choices => {
 //     choice.addEventListener('click', e => {
 //         if(!chosenAnswer) return
         

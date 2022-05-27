@@ -75,7 +75,7 @@
 }
 
 /* Questions div */
-#question h2 {
+#question {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -83,11 +83,11 @@
     justify-content: center;
     align-items: center;
     margin: 1rem auto 1rem auto;
-    font-size: 2rem;
+    font-size: 1rem;
     color:rgb(13, 21, 80) ;
-    background-image:-webkit-repeating-radial-gradient(white, rgb(206, 142, 142));
+    /* background-image:-webkit-repeating-radial-gradient(white, rgb(206, 142, 142));
     border-radius: 5px;
-    min-width: 25rem;
+    min-width: 25rem; */
 }
 
 /* Answers/options A, B, C, D div */
