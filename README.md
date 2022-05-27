@@ -3,7 +3,7 @@ Create a timed quiz incorporating front end click start button and back end powe
 
 GitHub Live: https://min-hinthar.github.io/timed-quiz-jsscript-mod4challenge/
 
-<image src="https://github.com/min-hinthar/timed-quiz-jsscript-mod4challenge/commit/51cf4f9d1b9e40bbe5b92ac529af32257ec9cc9d#diff-dbcd14f1c7bda008d147261509ce4f27621e1126e45e17418e7a568ac1c78be8">
+![Getting Started](./assets/images/favicon/Screenshot 2022-05-27 021104.jpg)
 
 User Story
 AS A coding boot camp student
