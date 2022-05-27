@@ -1,55 +1,57 @@
-const question = document.querySelectorAll("#question");
-const choices = Array.from(document.querySelectorAll(".choice-text");
-const questionProgress = document.querySelectorAll("#questionNum");
-const scoreText = document.querySelectorAll("#scoreNum");
+const question = document.getElementById("question");
+const choices = document.getElementsByClassName("choice-text");
+const questionProgress = document.getElementById("countdownTimer");
+const scoreText = document.getElementById("scoreNum");
+const scorePoints = 100;
+const maxQuestions = 5;
 
 let availableQuestions = 0;
-let currentQuestion = {};
-let questionCounter = 0;
+let currentQuestion = 0;
+let questionCounter = 1;
 let chosenAnswer = true;
 let score = 0;
 
-let questions = [
+var questionsArray = [
     {
         question: "JavaScript is the programming language of the [______]",
-        choice1: "Desktop",
-        choice2: "Mobile",
-        choice3: "Web",
-        choice4: "Server",
-        answer: 3,
+        possibleAnswers: [
+            "Desktop", "Mobile", "Web", "Server"
+        // NEED TO USE Comma "," after possibleAnswer Array!!
+        ],
+        answer: 3
     },
+        // NEED TO USE Comma "," to seperate each object array !!
     {
         question: "Which type of JavaScript language is [_____]?",
-        choice1: "Object-oriented",
-        choice2: "Object-based",
-        choice3: "Functional programming",
-        choice4: "All of the above",
-        answer: 2,
+        possibleAnswers: [
+            "Object-oriented", "Object-based", "Functional programming", "All of the above"
+        ],
+        answer: 2
     },
     {
         question: "Which of the following statement(s) is true about the JavaScript?",
-        choice1: "It is a scripting language used to make the website interactive",
-        choice2: "It is an advanced version of Java for Desktop and Mobile application development",
-        choice3: "It is a markup language of Java to develop the webpages",
-        choice4: "All of the above",
-        answer: 1,
+        possibleAnswers: [ 
+            "It is a scripting language used to make the website interactive", "It is an advanced version of Java for Desktop and Mobile application development", "It is a markup language of Java to develop the webpages", "All of the above"
+        ],
+        answer: 1
     },
     {
         question: "In which HTML element, we put the JavaScript code?",
-        choice1: "<javascript>...</javascript>",
-        choice2: "<js>...</js>",
-        choice3: "<script>...</script>",
-        choice4: "<css>...</css>",
-        answer: 3,
+        possibleAnswers: [ 
+            "<javascript>...</javascript>", "<js>...</js>", "<script>...</script>", "<css>...</css>"
+        ],
+        answer: 3
     },
     {
         question: "JavaScript code can be written in [_____]",
-        choice1: "JavaScript file (.js file)",
-        choice2: "HTML document directly",
-        choice3: "JavaScript file and in HTML document directly",
-        choice4: "In style sheets (.css file)",
-        answer: 3,
+        possibleAnswers: [ 
+            "JavaScript file (.js file)", "HTML document directly", "JavaScript file and in HTML document directly", "In style sheets (.css file)"
+        ],
+        answer: 3
     },
+    // NEED TO USE SEMIcolon ";" to end declaration of questions Array !!
+];
+
     // {
     //     question: "Which symbol is used separate JavaScript statements?",
     //     choice1: "Comma (,)",
@@ -58,65 +60,95 @@ let questions = [
     //     choice4: "Semicolon (;)",
     //     answer: 4,
     // },
-]
 
-const scorePoints = 100;
-const maxQuestions = 5;
+
 // WHEN I click the start button
-startGame = () => {
-    questionCounter = 0
-    score = 0
-    availableQuestions = [...questions]
-    // console.log('Start Quiz!')
-    getNewQuestion()
-} 
+// startGame = () => {
+//     questionCounter = 0
+//     score = 0
+//     availableQuestions = [...questions]
+//     // console.log('Start Quiz!')
+//     getNewQuestion()
+// } 
 
 // THEN a timer starts and I am presented with a question
-getNewQuestion = () => {
-    if(availableQuestions.length === 0 || questionCounter > maxQuestions) {
-        localStorage.setItem('mostRecentScore', score)
 
+var secondsLeft = 60;
+
+function setTime() {
+    var timeInterval = setInterval(function () {
+        secondsLeft--;
+        questionProgress.textContent = secondsLeft;
+        
+    if(secondsLeft === 0) {
+        clearInterval(timeInterval);
         return window.location.assign('/scoreboard.html')
     }
-
-    // questionCounter++
-    // incrementScore(questionCounter)
-
-    const questionsIndex = Math.floor(Math.random() * availableQuestions.length)
-    currentQuestion = availableQuestions[questionsIndex]
-    question.innerText = currentQuestion.question
-
-    choices.forEach(choice => {
-        const number = choice.dataset['number']
-        choice.innerText = currentQuestion.question['choice' + number] 
-    } )
-
-    availableQuestions.splice(questionsIndex, 1)
-
-    chosenAnswer = true
+    }, 1000);
 }
+
+setTime();
+
+// getNewQuestion = () => {
+    // for(availableQuestions.length === 0 || questionCounter > maxQuestions) {
+    //     localStorage.setItem('mostRecentScore', score)
+
+    //     return window.location.assign('/scoreboard.html')
+    // }
+    // questionCounter++
+    // incrementScore(questionCounter);
+
+
+
+function getNewQuestion(questionsArray) {
+    for(var i = 0; i < currentQuestion.length; i++) {
+        console.log(questionsArray[i]);
+    }
+}
+    // document.body.append(JSON.stringify(questionsArray[index]));
+    // var h2 = document.createElement("h2")
+    // h2.textContent = questions[index].question;
+    // document.body.append(h2);
+
+// }
+
+getNewQuestion();
+
+    // const questionsIndex = Math.floor(Math.random() * availableQuestions.length)
+    // currentQuestion = availableQuestions[questionsIndex]
+    // question.innerText = currentQuestion.question
+
+    // choices.forEach(choice => {
+    //     const number = choice.dataset['number']
+    //     choice.innerText = currentQuestion.question['choice' + number] 
+    // } )
+
+    // availableQuestions.splice(questionsIndex, 1)
+
+    // chosenAnswer = true
+
 
 // WHEN I answer a question
-choices.forEach(choice => {
-    choice.addEventListener('click', e => {
-        if(!chosenAnswer) return
+// choices.forEach(choice => {
+//     choice.addEventListener('click', e => {
+//         if(!chosenAnswer) return
         
-        chosenAnswer = false
-        const selectedChoice = e.target
-        const selectedAnswer = selectedChoice.dataset['number']
+//         chosenAnswer = false
+//         const selectedChoice = e.target
+//         const selectedAnswer = selectedChoice.dataset['number']
         
-        if(selectedChoice == true ) {
-            incrementScore(scorePoints)
-        }
-    })
-})
+//         if(selectedChoice == true ) {
+//             incrementScore(scorePoints)
+//         }
+//     })
+// })
 
-incrementScore = num => {
-    score +=num
-    scoreText.innerText = score
-}
+// incrementScore = num => {
+//     score +=num
+//     scoreText.innerText = score
+// }
 
-startGame ()
+// startGame ()
 
 
 // THEN I am presented with another question
@@ -126,27 +158,6 @@ startGame ()
 // THEN the game is over
 // WHEN the game is over
 // THEN I can save my initials and score -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
