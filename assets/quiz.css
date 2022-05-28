@@ -56,6 +56,18 @@
     }
 }
 
+.btnStart {
+    margin: 2rem;
+}
+
+.btnStart:hover {
+    box-shadow: 1 1 5px rgb(97, 5, 5);
+    cursor: pointer;
+    transition: 900ms;
+    transform: scale(2);
+    background: rgb(231, 132, 185);
+}
+
 /* HUD => Progress Bar */
 #questionText, #scoreText {
     font-size: 1.5rem;

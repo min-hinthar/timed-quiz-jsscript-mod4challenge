@@ -1,15 +1,13 @@
 var question = document.querySelectorAll("#question");
 var choices = document.querySelectorAll(".choice-text");
-var countdownTimer = document.querySelector("#countdownTimer");
+var countdownEl = document.querySelector("#countdownTimer");
 var scoreText = document.querySelectorAll("#scoreNum");
 var currentQuestion = document.querySelectorAll("#questionNum");
 
 console.log(question);
 console.log(choices);
-console.log(countdownTimer);
+console.log(countdownEl);
 console.log(scoreText);
-console.log(scorePoints);
-console.log(maxQuestions);
 console.log(currentQuestion);
 
 var availableQuestions = 0;
@@ -70,35 +68,55 @@ var questionsArray = [
     //     answer: 4,
     // },
 
+
 // console.log(questionsArray);
+function init () {
+    getWins();
+}
+
+const startBtn = document.getElementsByClassName("btnStart")
+
+startBtn.addEventListner('click', startGame)
 
 // WHEN I click the start button
-startGame = () => {
-    questionCounter = 0;
-    score = 0;
-    availableQuestions = [...questionsArray];
-    console.log('Start Quiz!');
-    
-    setTime = () => {
-        var timeInterval = setInterval(function () {
-            secondsLeft--;
-            countdownTimer.textContent = secondsLeft;
+function startGame() {
+    console.log('Game Started')
+}
+
+//     questionCounter = 0;
+//     score = 0;
+//     availableQuestions = [questionsArray];
+//     console.log('Start Quiz!');
+//     getNewQuestion()
+
+
+// // THEN a timer starts and I am presented with a question
+//     function setTimer() {    
+//         var timer;
+//         var secondsLeft = 60;
+//         timer = setInterval(function () {
+//             secondsLeft--;
+//             countdownEl.value = secondsLeft;
+//             console.log(secondsLeft);
             
-        if(secondsLeft === 0 ) {
-            clearInterval(timeInterval);
-            alert("Time is up! Please input your name to save your scores on local scoreboard!")
-            return window.location.assign('/scoreboard.html')
-        }
-        }, 1000);
-    }
-    setTime();
+//         if (secondsLeft === 0 ) {
+//             clearInterval(timeInterval);
+//             alert("Time is up! Please input your name to save your scores on local scoreboard!")
+//             return window.location.assign('/scoreboard.html')
+//         }
+//         }, 1000);
+//     }
+// } 
 
-    getNewQuestion()
-} 
+// function getNewQuestion = () => {
+    
 
-// THEN a timer starts and I am presented with a question
+// }
 
-var secondsLeft = 60;
+
+// function selectedAnswer() {
+
+// }
 
  
 
