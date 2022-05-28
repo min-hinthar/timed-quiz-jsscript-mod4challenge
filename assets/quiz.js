@@ -1,25 +1,24 @@
-var question = document.querySelector("#question");
+var question = document.querySelectorAll("#question");
 var choices = document.querySelectorAll(".choice-text");
-var countdownTimer = document.getElementById("countdownTimer");
-var scoreText = document.getElementById("scoreNum");
+var countdownTimer = document.querySelector("#countdownTimer");
+var scoreText = document.querySelectorAll("#scoreNum");
+var currentQuestion = document.querySelectorAll("#questionNum");
+
+console.log(question);
+console.log(choices);
+console.log(countdownTimer);
+console.log(scoreText);
+console.log(scorePoints);
+console.log(maxQuestions);
+console.log(currentQuestion);
+
+var availableQuestions = 0;
+// let currentQuestion = 0;
+var questionCounter = 1;
+var chosenAnswer = true;
+var score = 0;
 var scorePoints = 100;
 var maxQuestions = 5;
-var currentQuestion = document.querySelector("#questionNum")
-
-// console.log(question);
-// console.log(choices);
-// console.log(countdownTimer);
-// console.log(scoreText);
-// console.log(scorePoints);
-// console.log(maxQuestions);
-// console.log(currentQuestion);
-
-let availableQuestions = 0;
-// let currentQuestion = 0;
-let questionCounter = 1;
-let chosenAnswer = true;
-let score = 0;
-
 
 var questionsArray = [
     {
@@ -74,30 +73,34 @@ var questionsArray = [
 // console.log(questionsArray);
 
 // WHEN I click the start button
-// startGame = () => {
-//     questionCounter = 0
-//     score = 0
-//     availableQuestions = [...questions]
-//     // console.log('Start Quiz!')
-//     getNewQuestion()
-// } 
+startGame = () => {
+    questionCounter = 0;
+    score = 0;
+    availableQuestions = [...questionsArray];
+    console.log('Start Quiz!');
+    
+    setTime = () => {
+        var timeInterval = setInterval(function () {
+            secondsLeft--;
+            countdownTimer.textContent = secondsLeft;
+            
+        if(secondsLeft === 0 ) {
+            clearInterval(timeInterval);
+            alert("Time is up! Please input your name to save your scores on local scoreboard!")
+            return window.location.assign('/scoreboard.html')
+        }
+        }, 1000);
+    }
+    setTime();
+
+    getNewQuestion()
+} 
 
 // THEN a timer starts and I am presented with a question
 
 var secondsLeft = 60;
-function setTime() {
-    var timeInterval = setInterval(function () {
-        secondsLeft--;
-        countdownTimer.textContent = secondsLeft;
-        
-    if(secondsLeft === 0 ) {
-        clearInterval(timeInterval);
-        alert("Time is up! Please input your name to save your scores on local scoreboard!")
-        return window.location.assign('/scoreboard.html')
-    }
-    }, 1000);
-}
-setTime();
+
+ 
 
 // getNewQuestion = () => {
     // for(availableQuestions.length === 0 || questionCounter > maxQuestions) {
@@ -112,24 +115,24 @@ setTime();
     // console.log(question);
     // console.log(choices);
 
-function getNewQuestion(index) {
-    // console.log(questionsArray[index]);
-        var h3 = questions;
-        h3.textContent = questionsArray[index].question;
-        document.body.append(h3);
+// function getNewQuestion(index) {
+//     // console.log(questionsArray[index]);
+//         var h3 = questions;
+//         h3.textContent = questionsArray[index].question;
+//         document.body.append(h3);
 
 
-    for(var i = 0; i < questionsArray[index].possibleAnswers.length; i++) {
-        var p = choices;
-        p.textContent = questionsArray[index].choices[i];
-        document.body.append(p);
-        // console.log(questionsArray[i].possibleAnswers[i]);
-        // console.log(questionsArray[index].possibleAnswers[i]);
-    // }
-    }
-}
+//     for(var i = 0; i < questionsArray[index].possibleAnswers.length; i++) {
+//         var p = choices;
+//         p.textContent = questionsArray[index].choices[i];
+//         document.body.append(p);
+//         // console.log(questionsArray[i].possibleAnswers[i]);
+//         // console.log(questionsArray[index].possibleAnswers[i]);
+//     // }
+//     }
+// }
 
-getNewQuestion(0);
+// getNewQuestion(0);
 
 //     var questionsIndex = Math.floor(Math.random() * availableQuestions.length)
 //     currentQuestion = availableQuestions[questionsIndex]
