@@ -128,8 +128,8 @@ function startGame() {
     // }
     // questionCounter++
     // incrementScore(questionCounter);
-    var questions = document.querySelector("#question");
-    var choices = document.querySelectorAll(".choice-text");
+    // var questions = document.querySelector("#question");
+    // var choices = document.querySelectorAll(".choice-text");
     // console.log(question);
     // console.log(choices);
 
