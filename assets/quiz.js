@@ -8,7 +8,7 @@ console.log(question);
 console.log(choices);
 console.log(countdownEl);
 console.log(scoreText);
-console.log(currentQuestion);
+console.log(currentQuestionEl);
 
 var availableQuestions = 0;
 // let currentQuestion = 0;
