@@ -1,8 +1,8 @@
 var question = document.querySelectorAll("#question");
 var choices = document.querySelectorAll(".choice-text");
 var countdownEl = document.querySelector("#countdownTimer");
-var scoreText = document.querySelectorAll("#scoreNum");
-var currentQuestion = document.querySelectorAll("#questionNum");
+var scoreTextEl = document.getElementById("#scoreNum");
+var currentQuestionEl = document.getElementById("#questionNum");
 
 console.log(question);
 console.log(choices);
@@ -12,7 +12,8 @@ console.log(currentQuestion);
 
 var availableQuestions = 0;
 // let currentQuestion = 0;
-var questionCounter = 1;
+// this counter tells use which question user is on
+var questionCounter = 0;
 var chosenAnswer = true;
 var score = 0;
 var scorePoints = 100;
@@ -74,13 +75,15 @@ function init () {
     getWins();
 }
 
-const startBtn = document.getElementsByClassName("btnStart")
+const startBtn = document.getElementById("btnStart")
+const choicesEl = document.getElementById("choices")
 
-startBtn.addEventListner('click', startGame)
-
+startBtn.addEventListener('click', startGame);
+// startBtn.onclick = startGame
 // WHEN I click the start button
 function startGame() {
     console.log('Game Started')
+    getNewQuestion()
 }
 
 //     questionCounter = 0;
@@ -108,17 +111,64 @@ function startGame() {
 //     }
 // } 
 
-// function getNewQuestion = () => {
+
+const getNewQuestion = () => {
+    
+    var currentQuestion = questionsArray[questionCounter]
+    var questionTitle = document.getElementById("questionTitle")
+    questionTitle.textContent = currentQuestion.question
+    
+    currentQuestion.possibleAnswers.forEach(function (possibleAnswer, i) {
+        var choicecontainer = document.createElement("div")
+        choicecontainer.setAttribute("class", "choice-container" )
+
+        var choiceP = document.createElement("p");
+        choiceP.setAttribute("class", "choice-prefix" )
+        choiceP.textContent = `( ${i + 1} )`
+        
+
+        var choice = document.createElement("button")
+        choice.setAttribute("class", "choice-text" )
+        choice.setAttribute("data-number", i+1)
+        choice.textContent = possibleAnswer
+
+        choicecontainer.appendChild(choiceP)
+        choicecontainer.appendChild(choice)
+
+        choice.onclick = selectedAnswer;
+
+
+        choicesEl.appendChild(choicecontainer)
+    })
     
 
-// }
+}
 
 
-// function selectedAnswer() {
+function selectedAnswer() {
+    // check if correct
+    console.log("user selected value", this.dataset.number)
+    console.log("correct answer", questionsArray[questionCounter].answer)
 
-// }
+    if (questionsArray[questionCounter].answer == this.dataset.number) {
+        // increment score by 100 points 
+        // scoreText.textContent = score
+        score = scorePoints
+        scoreText.textContent = score
+        console.log("100 Points to Griffindor!")
+    }
+    else {
+        //
+    }
 
- 
+    // we want to change the question
+    questionCounter++;
+    getNewQuestion()
+}
+
+function incrementScore () {
+    
+}
 
 // getNewQuestion = () => {
     // for(availableQuestions.length === 0 || questionCounter > maxQuestions) {
