@@ -11,7 +11,7 @@ console.log(scoreText);
 console.log(currentQuestionEl);
 
 var availableQuestions = 0;
-// let currentQuestion = 0;
+var currentQuestion = 0;
 // this counter tells use which question user is on
 var questionCounter = 0;
 var chosenAnswer = true;
@@ -73,7 +73,7 @@ var questionsArray = [
 // console.log(questionsArray);
 function init () {
     getWins();
-}
+};
 
 const startBtn = document.getElementById("btnStart")
 const choicesEl = document.getElementById("choices")
@@ -82,9 +82,15 @@ startBtn.addEventListener('click', startGame);
 // startBtn.onclick = startGame
 // WHEN I click the start button
 function startGame() {
-    console.log('Game Started')
-    getNewQuestion()
-}
+    // reset score to 0
+    score = 0;
+    // reset question counter to 0
+    questionCounter = 0;
+    // assign var var to array objects
+    availableQuestions = [questionsArray];
+    console.log('Game Started');
+    getNewQuestion();
+};
 
 //     questionCounter = 0;
 //     score = 0;
@@ -113,7 +119,7 @@ function startGame() {
 
 
 const getNewQuestion = () => {
-
+    questionCounter++;
     var currentQuestion = questionsArray[questionCounter]
     var questionTitle = document.getElementById("questionTitle")
     questionTitle.textContent = currentQuestion.question
@@ -142,7 +148,7 @@ const getNewQuestion = () => {
     })
     
 
-}
+};
 
 
 function selectedAnswer() {
@@ -155,7 +161,7 @@ function selectedAnswer() {
         // scoreText.textContent = score
         score = scorePoints
         scoreText.textContent = score
-        console.log("100 Points to Griffindor!")
+        console.log("100 Points to Griffindor!");
     }
     else {
         //
@@ -163,12 +169,12 @@ function selectedAnswer() {
 
     // we want to change the question
     questionCounter++;
-    getNewQuestion()
-}
+    getNewQuestion();
+};
 
 function incrementScore () {
     
-}
+};
 
 // getNewQuestion = () => {
     // for(availableQuestions.length === 0 || questionCounter > maxQuestions) {
