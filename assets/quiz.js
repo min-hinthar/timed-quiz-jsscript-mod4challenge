@@ -113,7 +113,7 @@ function startGame() {
 
 
 const getNewQuestion = () => {
-    
+
     var currentQuestion = questionsArray[questionCounter]
     var questionTitle = document.getElementById("questionTitle")
     questionTitle.textContent = currentQuestion.question
