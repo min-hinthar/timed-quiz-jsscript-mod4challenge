@@ -1,6 +1,6 @@
 var question = document.querySelectorAll("#question");
 var choices = document.querySelectorAll(".choice-text");
-var countdownEl = document.querySelector("#countdownTimer");
+var countdownEl = document.getElementById("#countdownTimer");
 var scoreTextEl = document.getElementById("#scoreNum");
 var currentQuestionEl = document.getElementById("#questionNum");
 
@@ -87,8 +87,9 @@ function startGame() {
     // reset question counter to 0
     questionCounter = 0;
     // assign var var to array objects
-    availableQuestions = [questionsArray];
+    // availableQuestions = [questionsArray];
     console.log('Game Started');
+    // setTimer();
     getNewQuestion();
 };
 
@@ -100,12 +101,11 @@ function startGame() {
 
 
 // // THEN a timer starts and I am presented with a question
-//     function setTimer() {    
-//         var timer;
+// function setTimer() {    
 //         var secondsLeft = 60;
 //         timer = setInterval(function () {
 //             secondsLeft--;
-//             countdownEl.value = secondsLeft;
+//             countdownEl.textContent = secondsLeft;
 //             console.log(secondsLeft);
             
 //         if (secondsLeft === 0 ) {
@@ -114,8 +114,7 @@ function startGame() {
 //             return window.location.assign('/scoreboard.html')
 //         }
 //         }, 1000);
-//     }
-// } 
+//     };
 
 
 const getNewQuestion = () => {
