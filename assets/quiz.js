@@ -73,13 +73,20 @@ function init () {
     // getWins();
 };
 
-const startBtn = document.getElementById("btnStart")
-const choicesEl = document.getElementById("choices")
+var startBtn = document.getElementById("btnStart");
+if(startBtn){
+    startBtn.addEventListener('click', startGame);
+}
+var choicesEl = document.getElementById("choices");
 
-startBtn.addEventListener('click', startGame)
+// console.log(startBtn);
+// console.log(choicesEl);
 
-// startBtn.onclick = startGame
+// startBtn add Event Listner to start game
 // WHEN I click the start button
+
+// startBtn.addEventListener("click", startGame)
+
 function startGame() {
     // reset score to 0
     userScore = 0;
@@ -112,7 +119,7 @@ function setTimer() {
     if (secondsLeft === 0 || questionCounter >= maxQuestions) {
         clearInterval(countdown);
         alert("Time is up! Please input your name to save your scores on local scoreboard!")
-        return window.location.assign('scoreboard.html')
+        return window.location.assign('scoreboard.html', userScore)
     }
     }, 1000);
 };
@@ -120,6 +127,9 @@ function setTimer() {
 function getNewQuestion() {
     // increase question counter number by 1
     questionCounter++;
+    // currentQuestionEl link to counter
+    currentQuestionEl.textContent = questionCounter;
+
     var currentQuestion = questionsArray[questionCounter]
     var questionTitle = document.getElementById("questionTitle")
     questionTitle.textContent = currentQuestion.question
@@ -160,7 +170,7 @@ function selectedAnswer() {
     else {
         //deduct time from countdownTimer
         
-        secondsLeft = secondsLeft - 5;
+        secondsLeft = (secondsLeft-5);
         }
         // we want to change the question
         getNewQuestion();
@@ -186,7 +196,6 @@ function incrementScore () {
         scoreTextEl.textContent = userScore;
         console.log("100 Points to Griffindor!");
     };
-
 
 
 // getNewQuestion = () => {

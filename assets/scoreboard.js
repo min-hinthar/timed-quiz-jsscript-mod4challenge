@@ -37,7 +37,7 @@ function saveScore() {
         score: userScore,
     };
     // check if existing score or else create black array
-    var storedScores = JSON.parse(localStorage.getItem("storedScores") || "[]");
+    var storedScores = JSON.parse(localStorage.getItem("storedScores"));
     // push object into storedScores array
     storedScores.push(highScore)
     // convert object into string and setItem back into local storage
