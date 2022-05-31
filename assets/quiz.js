@@ -1,8 +1,8 @@
 var question = document.querySelectorAll("#question");
 var choices = document.querySelectorAll(".choice-text");
-var countdownEl = document.getElementsByClassName("countdownTimer");
-var scoreTextEl = document.getElementById("#scoreNum");
-var currentQuestionEl = document.getElementById("#questionNum");
+var countdownEl = document.getElementById("countdownTimer");
+var scoreTextEl = document.getElementById("scoreNum");
+var currentQuestionEl = document.getElementById("questionNum");
 
 // console.log(question);
 // console.log(choices);
@@ -88,6 +88,7 @@ function startGame() {
     // availableQuestions = [questionsArray];
     console.log('Game Started');
     // setTimer();
+    setTimer();
     getNewQuestion();
 };
 
@@ -97,12 +98,27 @@ function startGame() {
 //     console.log('Start Quiz!');
 //     getNewQuestion()
 
-
+// set variable for game time start at 60 seconds 
+var secondsLeft = 60;
 // // THEN a timer starts and I am presented with a question
+function setTimer() {    
+    var countdown = setInterval(function () {
+        // minus -1 per every 1000 ms
+        secondsLeft--;
+        countdownEl.textContent = secondsLeft;
+        console.log(secondsLeft);
+        
+    if (secondsLeft === 0 || questionCounter >= maxQuestions) {
+        clearInterval(countdown);
+        alert("Time is up! Please input your name to save your scores on local scoreboard!")
+        return window.location.assign('scoreboard.html')
+    }
+    }, 1000);
+};
 
-const getNewQuestion = () => {
-    // 
-    questionCounter+1;
+function getNewQuestion() {
+    // increase question counter number by 1
+    questionCounter++;
     var currentQuestion = questionsArray[questionCounter]
     var questionTitle = document.getElementById("questionTitle")
     questionTitle.textContent = currentQuestion.question
@@ -171,22 +187,6 @@ function incrementScore () {
     };
 
 
-var secondsLeft = 60;
-
-function setTimer() {    
-        
-        timer = setInterval(function () {
-            secondsLeft--;
-            countdownEl.textContent = secondsLeft;
-            console.log(secondsLeft);
-            
-        if (secondsLeft === 0 ) {
-            clearInterval(timeInterval);
-            alert("Time is up! Please input your name to save your scores on local scoreboard!")
-            return window.location.assign('/scoreboard.html')
-        }
-        }, 1000);
-    };
 
 // getNewQuestion = () => {
     // for(availableQuestions.length === 0 || questionCounter > maxQuestions) {
