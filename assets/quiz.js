@@ -1,21 +1,21 @@
 var question = document.querySelectorAll("#question");
 var choices = document.querySelectorAll(".choice-text");
-var countdownEl = document.getElementById("#countdownTimer");
+var countdownEl = document.getElementsByClassName("countdownTimer");
 var scoreTextEl = document.getElementById("#scoreNum");
 var currentQuestionEl = document.getElementById("#questionNum");
 
-console.log(question);
-console.log(choices);
-console.log(countdownEl);
-console.log(scoreText);
-console.log(currentQuestionEl);
+// console.log(question);
+// console.log(choices);
+// console.log(countdownEl);
+// console.log(scoreText);
+// console.log(currentQuestionEl);
 
 var availableQuestions = 0;
 var currentQuestion = 0;
 // this counter tells use which question user is on
 var questionCounter = 0;
 var chosenAnswer = true;
-var score = 0;
+var userScore = 0;
 var scorePoints = 100;
 var maxQuestions = 5;
 
@@ -58,21 +58,19 @@ var questionsArray = [
         answer: 3
     },
     // NEED TO USE SEMIcolon ";" to end declaration of questions Array !!
+    {
+        question: "Which symbol is used separate JavaScript statements?JavaScript code can be written in [_____]",
+        possibleAnswers: [ 
+            "Comma (,) file (.js file)", "Colon (:)", "Hyphen (_)", "Semicolon (;)"
+        ],
+        answer: 4
+    },
 ];
-
-    // {
-    //     question: "Which symbol is used separate JavaScript statements?",
-    //     choice1: "Comma (,)",
-    //     choice2: "Colon (:)",
-    //     choice3: "Hyphen (_)",
-    //     choice4: "Semicolon (;)",
-    //     answer: 4,
-    // },
 
 
 // console.log(questionsArray);
 function init () {
-    getWins();
+    // getWins();
 };
 
 const startBtn = document.getElementById("btnStart")
@@ -83,7 +81,7 @@ startBtn.addEventListener('click', startGame);
 // WHEN I click the start button
 function startGame() {
     // reset score to 0
-    score = 0;
+    userScore = 0;
     // reset question counter to 0
     questionCounter = 0;
     // assign var var to array objects
@@ -101,24 +99,10 @@ function startGame() {
 
 
 // // THEN a timer starts and I am presented with a question
-// function setTimer() {    
-//         var secondsLeft = 60;
-//         timer = setInterval(function () {
-//             secondsLeft--;
-//             countdownEl.textContent = secondsLeft;
-//             console.log(secondsLeft);
-            
-//         if (secondsLeft === 0 ) {
-//             clearInterval(timeInterval);
-//             alert("Time is up! Please input your name to save your scores on local scoreboard!")
-//             return window.location.assign('/scoreboard.html')
-//         }
-//         }, 1000);
-//     };
-
 
 const getNewQuestion = () => {
-    questionCounter++;
+    // 
+    questionCounter+1;
     var currentQuestion = questionsArray[questionCounter]
     var questionTitle = document.getElementById("questionTitle")
     questionTitle.textContent = currentQuestion.question
@@ -141,12 +125,8 @@ const getNewQuestion = () => {
         choicecontainer.appendChild(choice)
 
         choice.onclick = selectedAnswer;
-
-
-        choicesEl.appendChild(choicecontainer)
-    })
-    
-
+        choicesEl.appendChild(choicecontainer);
+    });
 };
 
 
@@ -158,22 +138,55 @@ function selectedAnswer() {
     if (questionsArray[questionCounter].answer == this.dataset.number) {
         // increment score by 100 points 
         // scoreText.textContent = score
-        score = scorePoints
-        scoreText.textContent = score
-        console.log("100 Points to Griffindor!");
+        incrementScore();
     }
     else {
-        //
-    }
+        //deduct time from countdownTimer
+        
+        secondsLeft = secondsLeft - 5;
+        }
+        // we want to change the question
+        getNewQuestion();
+    };
 
-    // we want to change the question
-    questionCounter++;
-    getNewQuestion();
-};
+
+// reset questions array state
+function clearQuestions () {
+    choicesEl.innerHTML = "";
+}
+// clearQuestionsDisplay = () =>
+//             choicesEl.remove(choicecontainer);
+
+var scoreTextEl = document.getElementsByClassName("hud-item", "hud-score-text");
 
 function incrementScore () {
-    
-};
+    // increment score by 100 points 
+        // scoreText.textContent = score
+        userScore = scoreTextEl
+
+        var scoreText = document.createElement("h2");
+        scoreText.setAttribute("class", "hud-item", "hud-score-text");
+        scoreTextEl.textContent = userScore;
+        console.log("100 Points to Griffindor!");
+    };
+
+
+var secondsLeft = 60;
+
+function setTimer() {    
+        
+        timer = setInterval(function () {
+            secondsLeft--;
+            countdownEl.textContent = secondsLeft;
+            console.log(secondsLeft);
+            
+        if (secondsLeft === 0 ) {
+            clearInterval(timeInterval);
+            alert("Time is up! Please input your name to save your scores on local scoreboard!")
+            return window.location.assign('/scoreboard.html')
+        }
+        }, 1000);
+    };
 
 // getNewQuestion = () => {
     // for(availableQuestions.length === 0 || questionCounter > maxQuestions) {
