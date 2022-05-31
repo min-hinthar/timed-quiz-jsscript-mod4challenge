@@ -1,4 +1,4 @@
-var firstNameSave = document.querySelector("#firstName");
+var firstNameSave = document.getElementById("firstName");
 var saveUser = document.querySelector("saveBtn.saveUser");
 var highScores = [];
 // var storedScores = JSON.parse(localStorage.getItem(highScores)
@@ -19,7 +19,7 @@ saveBtn.addEventListener("click", function (event) {
     // added to prevent rerun
     event.stopPropagation();
     // run save score function
-    // saveScore();
+    saveScore();
     // console.log("Score is Saved!");
     // return to index.html home page
     // window.location.href = "index.html";
@@ -27,9 +27,21 @@ saveBtn.addEventListener("click", function (event) {
 
 // save score local storage function
 function saveScore() {
-    // create var for userName storage
-    firstNameSave
+    // refer userName storage and set value to input
+    firstNameSave = document.getElementById("firstName").value;
 
+    // create new object with firstName and highScore
+    var highScore = {
+        name: firstNameSave,
+        // link var from quiz.js
+        score: userScore,
+    };
+    // check if existing score or else create black array
+    var storedScores = JSON.parse(localStorage.getItem("storedScores") || "[]");
+    // push object into storedScores array
+    storedScores.push(highScore)
+    // convert object into string and setItem back into local storage
+    localStorage.setItem("storedScores", JSON.stringify(storedScores));
 }
 
 // event listener for save button

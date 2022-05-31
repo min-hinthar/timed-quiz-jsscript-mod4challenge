@@ -76,7 +76,8 @@ function init () {
 const startBtn = document.getElementById("btnStart")
 const choicesEl = document.getElementById("choices")
 
-startBtn.addEventListener('click', startGame);
+startBtn.addEventListener('click', startGame)
+
 // startBtn.onclick = startGame
 // WHEN I click the start button
 function startGame() {
@@ -154,7 +155,7 @@ function selectedAnswer() {
     if (questionsArray[questionCounter].answer == this.dataset.number) {
         // increment score by 100 points 
         // scoreText.textContent = score
-        incrementScore();
+        incrementScore(scorePoints);
     }
     else {
         //deduct time from countdownTimer
@@ -173,15 +174,15 @@ function clearQuestions () {
 // clearQuestionsDisplay = () =>
 //             choicesEl.remove(choicecontainer);
 
-var scoreTextEl = document.getElementsByClassName("hud-item", "hud-score-text");
+var scoreTextEl = document.getElementById("scoreNum");
+// console.log(scoreTextEl);
 
 function incrementScore () {
     // increment score by 100 points 
         // scoreText.textContent = score
-        userScore = scoreTextEl
-
+        userScore = (userScore+scorePoints);
         var scoreText = document.createElement("h2");
-        scoreText.setAttribute("class", "hud-item", "hud-score-text");
+        scoreText.setAttribute("class", "hud-score-text");
         scoreTextEl.textContent = userScore;
         console.log("100 Points to Griffindor!");
     };
