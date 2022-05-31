@@ -76,6 +76,8 @@ function init () {
 var startBtn = document.getElementById("btnStart");
 if(startBtn){
     startBtn.addEventListener('click', startGame);
+    // Solved null error by following code fix: 
+    //https://stackoverflow.com/questions/26107125/cannot-read-property-addeventlistener-of-null
 }
 var choicesEl = document.getElementById("choices");
 
