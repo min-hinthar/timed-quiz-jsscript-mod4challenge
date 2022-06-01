@@ -1,6 +1,6 @@
 var firstNameSave = document.getElementById("firstName");
 var saveUser = document.querySelector("saveBtn.saveUser");
-var highScores = [];
+var highScores = {};
 // var storedScores = JSON.parse(localStorage.getItem(highScores)
 
 console.log(firstNameSave);
@@ -37,12 +37,38 @@ function saveScore() {
         score: userScore,
     };
     // check if existing score or else create black array
-    var storedScores = JSON.parse(localStorage.getItem("storedScores"));
+    var storedScores = JSON.parse(localStorage.getItem("storedScores")) || [];
     // push object into storedScores array
     storedScores.push(highScore)
     // convert object into string and setItem back into local storage
     localStorage.setItem("storedScores", JSON.stringify(storedScores));
+
+    showHighScorer();
 }
+
+function showHighScorer (){
+    var tbody = document.getElementById("score-body");
+    tbody.innerHTML = '';
+    // this function will get value from local storage and append to table
+    var storedScores = JSON.parse(localStorage.getItem("storedScores")) || [];
+    storedScores.forEach(function (score) {
+        // create tr elements
+        var tr = document.createElement("tr");
+
+        var tdName = document.createElement("td");
+        tdName.textContent = score.name;
+
+        var tdScore = document.createElement("td");
+        tdScore.textContent = score.score;
+
+        tr.appendChild(tdName)
+        tr.appendChild(tdScore)
+
+        tbody.appendChild(tr);
+    } )
+}
+
+//storedScores.document.createElment('p')
 
 // event listener for save button
 // saveBtn.addEventListener("click", funtion(event {
@@ -57,3 +83,5 @@ function saveScore() {
 // // setItem of submitted firstName to local 
 // localStorage.setItem("user", JSON.stringify(user));
 // });
+
+showHighScorer()

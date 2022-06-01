@@ -136,6 +136,8 @@ function getNewQuestion() {
     var questionTitle = document.getElementById("questionTitle")
     questionTitle.textContent = currentQuestion.question
     
+    choicesEl.innerHTML='';
+    
     currentQuestion.possibleAnswers.forEach(function (possibleAnswer, i) {
         var choicecontainer = document.createElement("div")
         choicecontainer.setAttribute("class", "choice-container" )
@@ -154,6 +156,7 @@ function getNewQuestion() {
         choicecontainer.appendChild(choice)
 
         choice.onclick = selectedAnswer;
+        
         choicesEl.appendChild(choicecontainer);
     });
 };
