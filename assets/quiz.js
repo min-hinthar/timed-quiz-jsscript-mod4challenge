@@ -17,7 +17,7 @@ var questionCounter = 0;
 var chosenAnswer = true;
 var userScore = 0;
 var scorePoints = 100;
-var maxQuestions = 5;
+
 
 var questionsArray = [
     {
@@ -67,6 +67,7 @@ var questionsArray = [
     },
 ];
 
+var maxQuestions = questionsArray.length;
 
 // console.log(questionsArray);
 function init () {
@@ -121,6 +122,7 @@ function setTimer() {
     if (secondsLeft === 0 || questionCounter >= maxQuestions) {
         clearInterval(countdown);
         alert("Time is up! Please input your name to save your scores on local scoreboard!")
+        localStorage.setItem('currentScore', userScore)
         return window.location.assign('scoreboard.html', userScore)
     }
     }, 1000);

@@ -11,6 +11,7 @@ console.log(highScores);
 
 // run function when page loads
 function init() {
+
 };
 
 var saveBtn = document.getElementById("saveUser");
@@ -34,7 +35,7 @@ function saveScore() {
     var highScore = {
         name: firstNameSave,
         // link var from quiz.js
-        score: userScore,
+        score: localStorage.getItem('currentScore'),
     };
     // check if existing score or else create black array
     var storedScores = JSON.parse(localStorage.getItem("storedScores")) || [];
