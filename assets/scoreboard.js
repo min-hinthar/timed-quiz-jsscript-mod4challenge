@@ -69,20 +69,4 @@ function showHighScorer (){
     } )
 }
 
-//storedScores.document.createElment('p')
-
-// event listener for save button
-// saveBtn.addEventListener("click", funtion(event {
-//     console.log("Save Btn Clicked!");
-//     event.preventDefault();
-
-// create a new user var from click of save button
-// var user = {
-//     firstName: firstNameSave.value.trim(),
-// };
-
-// // setItem of submitted firstName to local 
-// localStorage.setItem("user", JSON.stringify(user));
-// });
-
 showHighScorer()
